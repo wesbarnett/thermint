@@ -7,6 +7,11 @@ energy simulations. This program calculates free energy difference estimates
 through thermodynamic integration. Additionally it calculates uncertainty in the
 estimate through a bootstrap calculation.
 
+Note that GROMACS already comes with a way to calculate free energy estimates
+with the Bennett Acceptance Ratio using "gmx bar", so you should check that out
+as well, since unlike this project, it is reviewed by several developers in the
+field.
+
 ##Prerequisites
 
 You need Boost and GROMACS.
@@ -62,3 +67,60 @@ When you run the program it will tell you which group (right now coul, vdw,
 mass, or restraint) and the lambda values and the file. At the end of the
 calculation you'll get a breakdown of the results along with the total free
 energy change estimate and uncertainty.
+
+Here are example results from adding an OPLS methane to tip3p water.
+
+````
+Results in kJ/mol
+coul:
+Sim    lambda  <dVcoul/dl> ±  std.dev.      weight  w*<dVcoul/dl>      tot
+  1     0.000      -0.534 ±  123.097       0.000      -0.000       0.000
+  2     0.000      -0.032 ±  121.891       0.000      -0.000       0.000
+  3     0.000       0.758 ±  106.456       0.000       0.000       0.000
+  4     0.000      -0.259 ±   74.810       0.000      -0.000       0.000
+  5     0.000      -0.492 ±   13.991       0.000      -0.000       0.000
+  6     0.000       0.056 ±    2.416       0.000       0.000       0.000
+  7     0.000       0.080 ±    1.067       0.000       0.000       0.000
+  8     0.000       0.090 ±    0.865       0.000       0.000       0.000
+  9     0.000       0.074 ±    0.759       0.000       0.000       0.000
+ 10     0.000       0.069 ±    0.687       0.000       0.000       0.000
+ 11     0.000       0.069 ±    0.632       0.033       0.002       0.002
+ 12     0.100       0.055 ±    0.632       0.133       0.007       0.010
+ 13     0.200       0.031 ±    0.634       0.067       0.002       0.012
+ 14     0.300       0.014 ±    0.641       0.133       0.002       0.014
+ 15     0.400       0.002 ±    0.645       0.067       0.000       0.014
+ 16     0.500      -0.017 ±    0.645       0.133      -0.002       0.011
+ 17     0.600      -0.031 ±    0.643       0.067      -0.002       0.009
+ 18     0.700      -0.049 ±    0.639       0.133      -0.007       0.003
+ 19     0.800      -0.064 ±    0.654       0.067      -0.004      -0.001
+ 20     0.900      -0.087 ±    0.657       0.133      -0.012      -0.013
+ 21     1.000      -0.099 ±    0.658       0.033      -0.003      -0.016
+
+vdw:
+Sim    lambda  <dVvdw/dl> ±  std.dev.      weight  w*<dVvdw/dl>      tot
+  1     0.000      -0.008 ±    4.266       0.033      -0.000      -0.017
+  2     0.100      10.796 ±    7.776       0.133       1.439       1.423
+  3     0.200      23.565 ±   14.874       0.067       1.571       2.994
+  4     0.300      30.114 ±   26.138       0.133       4.015       7.009
+  5     0.400      19.823 ±   28.326       0.067       1.322       8.331
+  6     0.500       8.852 ±   21.850       0.133       1.180       9.511
+  7     0.600       3.710 ±   18.102       0.067       0.247       9.758
+  8     0.700       0.641 ±   15.783       0.133       0.086       9.844
+  9     0.800      -1.611 ±   14.056       0.067      -0.107       9.736
+ 10     0.900      -2.971 ±   12.957       0.133      -0.396       9.340
+ 11     1.000      -4.039 ±   12.093       0.033      -0.135       9.206
+ 12     1.000      -4.037 ±   12.141       0.000      -0.000       9.206
+ 13     1.000      -3.960 ±   12.220       0.000      -0.000       9.206
+ 14     1.000      -3.974 ±   12.155       0.000      -0.000       9.206
+ 15     1.000      -3.961 ±   12.170       0.000      -0.000       9.206
+ 16     1.000      -3.968 ±   12.231       0.000      -0.000       9.206
+ 17     1.000      -3.947 ±   12.117       0.000      -0.000       9.206
+ 18     1.000      -4.104 ±   12.119       0.000      -0.000       9.206
+ 19     1.000      -4.000 ±   12.084       0.000      -0.000       9.206
+ 20     1.000      -4.213 ±   11.923       0.000      -0.000       9.206
+ 21     1.000      -4.080 ±   12.111       0.000      -0.000       9.206
+
+
+total: 9.206 ± 0.072 kJ/mol
+````
+
