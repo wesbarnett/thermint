@@ -65,7 +65,7 @@ bootstrapped average and then variance. Block bootstrapping is used, such that
 each set of dV/dl is split up into several blocks (5 by default) which are
 randomly selected with replacement for each free energy calculation. Five blocks
 are chosen by default under the assumption that your simulation will be at least
-five times the correlation time. The standard error is then estimated to be the
+five times the correlation time. The uncertainty is then estimated to be the
 bootstrap standard deviation. The number of blocks can be changed with
 --nblocks. Choosing too many blocks will give an uncertainty which is much lower
 than the true uncertainty.
@@ -74,6 +74,10 @@ When you run the program it will tell you which group (right now coul, vdw,
 mass, or restraint) and the lambda values and the file. At the end of the
 calculation you'll get a breakdown of the results along with the total free
 energy change estimate and uncertainty.
+
+For more commandline options run:
+
+    thermint -h
 
 ##Example
 
