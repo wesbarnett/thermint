@@ -49,7 +49,8 @@ Simpson's rule and Gaussian-Legendre quadrature are also available. Beware that
 in order to use Gaussian-Legendre quadrature for the integration you must have
 run your simulations at the appropriate lambdas. Both the trapezoid rule and
 Simpson's method do not require specific lambdas. Equal spacing of simulations
-for trapezoid rule and Simpson's method is not required.
+for trapezoid rule and Simpson's method is not required. The method is changed
+with the -m flag.
 
 When running the integration calculation you must specify the energy files. **In
 order use this utility you must have set separate-dhdl-file as 'no' in your mdp
@@ -86,6 +87,10 @@ energy change estimate and uncertainty.
 For more commandline options run:
 
     thermint -h
+
+If you want to save the output from the screen (see below) to a file simply do:
+
+    thermint -f ener*.edr | tee output.txt
 
 ##Example
 
@@ -143,8 +148,6 @@ Sim    lambda  <dVvdw/dl> ±  std.dev.      weight  w*<dVvdw/dl>      tot
  19     1.000      -4.000 ±   12.084       0.000      -0.000       9.206
  20     1.000      -4.213 ±   11.923       0.000      -0.000       9.206
  21     1.000      -4.080 ±   12.111       0.000      -0.000       9.206
-
-Doing bootstrap calculation for uncertainty (could take a few minutes)...
 
 total: 9.206 ± 0.056 kJ/mol
 ````
