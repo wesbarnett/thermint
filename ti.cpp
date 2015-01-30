@@ -140,7 +140,7 @@ int main(int argc, char* argv[]) {
     {
     dVdl_energy_info dei(energy_file_names);
 
-	cout << "Results in " << dei.get_units() << endl << endl;
+	cout << endl << "Results in " << dei.get_units() << endl << endl;
 
     for (group_count = 0; group_count < dei.get_n_groups(); group_count++) 
     {
@@ -518,7 +518,7 @@ dVdl_energy_info::dVdl_energy_info(vector <string> edrfiles)
         {
 			if (fr->block[i].id == enxDHCOLL)
             {
-				cerr << "lambdas:" << endl;
+				cerr << endl << "lambdas:" << endl;
                 fep_state = fr->block[i].sub[1].ival[0];
                 for (k = 0; k < n_groups; k++)
                 {
