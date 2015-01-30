@@ -24,7 +24,7 @@ compressed energy files).
     mkdir build
     cd build
     cmake ..
-    make -j 4
+    make
     make install
 
 The GMXPREFIX environmental variable is used to find the GROMACS install
