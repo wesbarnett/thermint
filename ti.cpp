@@ -190,14 +190,17 @@ int main(int argc, char* argv[]) {
 		cout << endl;
     }
 
+    cout << "Doing bootstrap calculation for uncertainty (could take a few minutes)..." << endl << endl;
+
     /* Bootstrap section starts here.
      * Block bootstrapping is used to help get an accurate uncertainty, since
      * there could be (probably is) correlated dV/dl's in each simulation.
      */
 
-    bootstrap_values.resize(0);
     bootstrap_avg = 0.0;
     bootstrap_var = 0.0;
+    bootstrap_values.resize(bootstrap_n);
+    #pragma omp parallel for private(i,bootstrap_result,group_count,weights,lambda_count,sum,N,block_count,block,j,mean)
     for (i = 0; i < bootstrap_n; i++) 
     {
 
@@ -229,7 +232,7 @@ int main(int argc, char* argv[]) {
 
         }
 
-        bootstrap_values.push_back(bootstrap_result);
+        bootstrap_values.at(i) = bootstrap_result;
         bootstrap_avg += bootstrap_result;
     }
 
@@ -265,7 +268,7 @@ int main(int argc, char* argv[]) {
         bootstrap_hist.at(i) /= bootstrap_n;
     }
 
-	cout << endl << "total: " << result << " ± " << uncertainty << " " << dei.get_units() << endl << endl;
+	cout << "total: " << result << " ± " << uncertainty << " " << dei.get_units() << endl << endl;
 
     oFS.open(bootstrap_file.c_str());
     oFS << setprecision(6);
