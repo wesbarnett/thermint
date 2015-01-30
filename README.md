@@ -47,7 +47,9 @@ When running the integration calculation you must specify the energy files. **In
 order use this utility you must have set separate-dhdl-file as 'no' in your mdp
 files.**  If you had it set as 'yes' (the default), you're out of luck with that
 set of simulations (sorry), so if you want to use this utility, run them again
-with the option set to 'no'. The easiest way to specify the files is to do the
+with the option set to 'no'.
+
+The easiest way to specify the energy files to read in is to do the
 following: If 'ener' is the common prefix of all of your energy files, do:
 
     thermint -f ener*.edr
