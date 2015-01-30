@@ -136,17 +136,26 @@ int main(int argc, char* argv[]) {
 
     srand(time(0));
 
+    try
+    {
     dVdl_energy_info dei(energy_file_names);
 
-	cout << endl;
-	cout << "Results in " << dei.get_units() << endl;
+	cout << "Results in " << dei.get_units() << endl << endl;
 
     for (group_count = 0; group_count < dei.get_n_groups(); group_count++) 
     {
 
         pos = find(dV_group_names.begin(), dV_group_names.end(), dei.get_group_name(group_count)) - dV_group_names.begin();
 		cout << group_short_names.at(pos) << ":" << endl;
-        weights = get_weights(dei.get_lambdas(group_count),integration_type);
+        try
+        {
+            weights = get_weights(dei.get_lambdas(group_count),integration_type);
+        }
+        catch(exception const& e)
+        {
+            cout << "ERROR: " << e.what() << "\n";
+            return -1;
+        }
 
 		cout << right;
 		cout << setw(3) << "Sim";
@@ -190,7 +199,7 @@ int main(int argc, char* argv[]) {
 		cout << endl;
     }
 
-    cout << "Doing bootstrap calculation for uncertainty (could take a few minutes)..." << endl << endl;
+    cerr << "Doing bootstrap calculation for uncertainty (could take a few minutes)..." << endl << endl;
 
     /* Bootstrap section starts here.
      * Block bootstrapping is used to help get an accurate uncertainty, since
@@ -281,6 +290,14 @@ int main(int argc, char* argv[]) {
     }
     oFS.close();
 
+    }
+
+    catch(exception const& e)
+    {
+        cout << "ERROR: " << e.what() << "\n";
+        return -1;
+    }
+
     return 0;
 }
 
@@ -313,9 +330,9 @@ vector <double> get_simpsons_weights(vector <double> lambda) {
     vector <double> w(lambda.size());
     int i;
 
-	// TODO try block
-    if (lambda.size() % 2 == 0) {
-		cout << "ERROR: Simpson's rule can only be used with an odd number of points! Choose trapezoid method and try again." << endl;
+    if (lambda.size() % 2 == 0) 
+    {
+        throw runtime_error("Simpson's rule can only be used with an odd number of points! Choose trapezoid method and try again.");
     }
 
     for (i = 0; i < lambda.size(); i++)   
@@ -475,7 +492,7 @@ dVdl_energy_info::dVdl_energy_info(vector <string> edrfiles)
     for (j = 0; j < edrfiles.size(); j++)
     {
 
-		cout << endl;
+		cerr << endl;
         fp = open_enx(edrfiles.at(j).c_str(),"r");
 
         // Get energy groups with dV/dl in first energy file
@@ -494,21 +511,21 @@ dVdl_energy_info::dVdl_energy_info(vector <string> edrfiles)
         do_enx(fp,fr);
         if (fr->nblock == 0)
         {
-			cout << "ERROR: Energy file does not have needed values. Most likely separate-dhdl-file was set to yes in the .mdp file.";
+            throw runtime_error("Energy file does not have needed values. Most likely separate-dhdl-file was set to yes in the .mdp file.");
         }
         // Get lambda from subblock
         for (i = 0; i < fr->nblock; i++)
         {
 			if (fr->block[i].id == enxDHCOLL)
             {
-				cout << endl << "lambdas:" << endl;
+				cerr << "lambdas:" << endl;
                 fep_state = fr->block[i].sub[1].ival[0];
                 for (k = 0; k < n_groups; k++)
                 {
 					lambda.at(k).resize(edrfiles.size());
                     this_lambda = fr->block[i].sub[0].dval[5+k];
                     pos = find(dV_group_names.begin(), dV_group_names.end(), group_names.at(k)) - dV_group_names.begin();
-					cout <<" " << group_short_names.at(pos) << ": " << this_lambda << endl;
+					cerr <<" " << group_short_names.at(pos) << ": " << this_lambda << endl;
                     lambda.at(k).at(fep_state) = this_lambda;
                 }
 			}
@@ -531,14 +548,13 @@ dVdl_energy_info::dVdl_energy_info(vector <string> edrfiles)
             }
         count++;
         }
-		cout << endl;
+		cerr << endl;
 
         free_enxframe(fr);
         sfree(fr);
 
         close_enx(fp);
     }
-
 
 }
 
@@ -565,19 +581,17 @@ int dVdl_energy_info::get_group_info(ener_file *fp)
 
     if (n_groups > 0) 
     {
-        cout << "the following dv/dl energy groups were found: " << endl;
+        cerr << "the following dv/dl energy groups were found: " << endl;
         for (int i =0; i < n_groups; i++) 
         {
-			cout <<"  " << group_names.at(i) << endl;
+			cerr <<"  " << group_names.at(i) << endl;
         }
-		cout << endl;
+		cerr << endl;
         return 0;
     } 
     else 
     {
-		// TODO need a try block
-		cout << "ERROR: No groups with dV/dl present in the energy file." << endl;
-        return -1;
+        throw runtime_error("No groups with dV/dl present in the energy file.");
     }
 
 }
