@@ -44,10 +44,10 @@ You'll get the number.
 
 ##Details
 
-By default the program uses the trapezoid method for the integration, but
-Simpson's rule and Gaussian-Legendre quadrature are also available. Beware that
-in order to use Gaussian-Legendre quadrature for the integration you must have
-run your simulations at the appropriate lambdas. Both the trapezoid rule and
+By default the program uses the Simpson's rule for the integration, but
+the trapezoid method and Gaussian-Legendre quadrature are also available. Beware
+that in order to use Gaussian-Legendre quadrature for the integration you must
+have run your simulations at the appropriate lambdas. Both the trapezoid rule and
 Simpson's method do not require specific lambdas. Equal spacing of simulations
 for trapezoid rule and Simpson's method is not required. The method is changed
 with the -m flag.

@@ -81,9 +81,9 @@ int main(int argc, char* argv[]) {
 	desc.add_options()
 		("help,h","Show usage.")
 		("file,f",po::value< vector <string> >(&energy_file_names),"Energy files to be read in.")
-		("method,m",po::value<string>(&integration_type)->default_value("trapezoid"),"Method: trapezoid, simpsons, or gaussian.")
+		("method,m",po::value<string>(&integration_type)->default_value("simspsons"),"Method: trapezoid, simpsons, or gaussian.")
 		("output,o",po::value<string>(&bootstrap_file)->default_value("bootstrap.dat"),"Name of bootstrap histogram file to be output.")
-		("nboot",po::value<int>(&bootstrap_n)->default_value(200),"Number of iterations to be performed in bootstrap calculation.")
+		("nboot",po::value<int>(&bootstrap_n)->default_value(1000),"Number of iterations to be performed in bootstrap calculation.")
 		("nblocks",po::value<int>(&block_n)->default_value(5),"Number of blocks for bootstrap calculation.")
 		("nbins",po::value<int>(&bins_n)->default_value(200),"Number of bins for bootstrap histograms.")
 	;
@@ -92,7 +92,7 @@ int main(int argc, char* argv[]) {
 	po::store(po::command_line_parser(argc,argv).options(desc).positional(p).run(),vm);
 	po::notify(vm);
 
-	if (vm.count("h"))
+	if (vm.count("help"))
 	{
 		cout << desc << endl;
 		return -1;
