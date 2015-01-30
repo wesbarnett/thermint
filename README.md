@@ -34,7 +34,15 @@ installation](http://www.gromacs.org/Documentation/Installation_Instructions#Get
 Also note that if you use gcc the bootstrap calculation will be compiled to run
 in parallel using OpenMP automatically.
 
-##Running
+##Quick Start
+
+Just choose your energy files corresponding with the free energy simulations with -f:
+
+    thermint -f ener*.edr
+
+You'll get the number.
+
+##Details
 
 By default the program uses the trapezoid method for the integration, but
 Simpson's rule and Gaussian-Legendre quadrature are also available. Beware that
