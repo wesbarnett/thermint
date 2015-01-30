@@ -96,7 +96,7 @@ If you want to save the output from the screen (see below) to a file simply do:
 
 Here are example results from adding an OPLS methane (both vdw and electrostatic
 parameters) to tip3p water using Simpson's rule with 10,000 bootstrap iterations
-with five blocks. The first 10 simulations the vdw parameters varied and the
+with five blocks. In the first 10 simulations the vdw parameters varied and in the
 last 10 the Coulomb ones did.
 
 ````
