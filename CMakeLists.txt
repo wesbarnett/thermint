@@ -11,7 +11,7 @@ if (Boost_FOUND)
 endif()
 
 find_path(GROMACS_GROMACS_INCLUDE gromacs/fileio/enxio.h)
-set(GROMACS_INCLUDE ${GROMACS_GROMACS_INCLUDE}/include)
+set(GROMACS_INCLUDE ${GROMACS_GROMACS_INCLUDE})
 find_library(GROMACS_LIBRARY NAMES libgromacs PATH ${GROMACS_ROOT}/lib64)
 include_directories(${GROMACS_INCLUDE})
 message("GROMACS include dir = ${GROMACS_INCLUDE}")

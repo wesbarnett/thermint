@@ -1,4 +1,6 @@
-Thermodynamic Integration Utility
+#Thermodynamic Integration Utility
+
+##About
 
 This utility is designed to be used with GROMACS output from a set of free
 energy simulations. This program calculates free energy difference estimates
@@ -11,6 +13,21 @@ in order to use Gaussian-Legendre quadrature for the integration you must have
 run your simulations at the appropriate lambdas. Both the trapezoid rule and
 Simpson's method do not require specific lambdas. Equal spacing of simulations
 for trapezoid rule and Simpson's method is not required.
+
+##Installation
+
+    git clone https://github.com/wesbarnett/thermint .
+    cd thermint 
+    mkdir build
+    cd build
+    cmake ..
+    make -j 4
+    make install
+
+You might have to tell cmake where GROMACS library is with -DCMAKE_PREFIX_PATH
+is or something like that if it's in a nonstandard location.
+
+##Running
 
 When running the integration calculation you must specify the energy files. In
 order to do this you must have set separate-dhdl-file as 'no' in your mdp files.
