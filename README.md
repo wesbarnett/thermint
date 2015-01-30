@@ -39,17 +39,18 @@ run your simulations at the appropriate lambdas. Both the trapezoid rule and
 Simpson's method do not require specific lambdas. Equal spacing of simulations
 for trapezoid rule and Simpson's method is not required.
 
-When running the integration calculation you must specify the energy files. In
-order to do this you must have set separate-dhdl-file as 'no' in your mdp files.
-If you had it set as 'yes' (the default), you're out of luck with that set of
-simulations (sorry). The easiest way to specify the files is to do the
+When running the integration calculation you must specify the energy files. **In
+order use this utility you must have set separate-dhdl-file as 'no' in your mdp
+files.**  If you had it set as 'yes' (the default), you're out of luck with that
+set of simulations (sorry), so if you want to use this utility, run them again
+with the option set to 'no'. The easiest way to specify the files is to do the
 following: If 'ener' is the common prefix of all of your energy files, do:
 
     thermint -f ener*.edr
             
 Note that dV/dl, which is required for the integration, is read in directly from
-the energy files so that the output frequency of these values from your
-simulation was determined by the nstenergy variable in your mdp file."
+the energy files so that **the output frequency of these values from your
+simulation was determined by the nstenergy variable in your mdp file**.
 
 As mentioned above the standard error is estimated using a bootstrap
 calculation. The number of iterations in the bootstrap calculation can be
@@ -131,3 +132,8 @@ total: 9.206 ± 0.056 kJ/mol
 ````
 And here's the histogram from the bootstrap calculation:
 ![Bootstrap distribution of free energy difference estimate](bootstrap.png)
+
+##Resources
+M. R. Shirts and D. L. Mobley, "An introduction to best practices in free energy
+calculations", in Biomolecular Simulations: Methods and Protocols, Methods in
+Molecular Biology 924:271-311 (2013). 
