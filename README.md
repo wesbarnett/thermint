@@ -21,8 +21,8 @@ You need Boost and GROMACS.
     make -j 4
     make install
 
-You might have to tell cmake where GROMACS library is with -DCMAKE_PREFIX_PATH
-or something like that if it's in a nonstandard location.
+The GMXPREFIX environmental variable is used to find the GROMACS install
+location. Either set it manually our source the GMXRC file in your installation.
 
 ##Running
 
