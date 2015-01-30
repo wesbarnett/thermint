@@ -68,6 +68,8 @@ mass, or restraint) and the lambda values and the file. At the end of the
 calculation you'll get a breakdown of the results along with the total free
 energy change estimate and uncertainty.
 
+##Example
+
 Here are example results from adding an OPLS methane (both vdw and electrostatic
 parameters) to tip3p water using Simpson's rule with 10,000 bootstrap iterations
 with five blocks. The first 10 simulations the vdw parameters varied and the
@@ -127,4 +129,5 @@ Doing bootstrap calculation for uncertainty (could take a few minutes)...
 
 total: 9.206 ± 0.056 kJ/mol
 ````
-
+And here's the histogram from the bootstrap calculation:
+![Bootstrap distribution of free energy difference estimate](bootstrap.png)
