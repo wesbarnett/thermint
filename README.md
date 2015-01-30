@@ -22,7 +22,7 @@ You need Boost and GROMACS.
     make install
 
 You might have to tell cmake where GROMACS library is with -DCMAKE_PREFIX_PATH
-is or something like that if it's in a nonstandard location.
+or something like that if it's in a nonstandard location.
 
 ##Running
 
@@ -35,8 +35,9 @@ for trapezoid rule and Simpson's method is not required.
 
 When running the integration calculation you must specify the energy files. In
 order to do this you must have set separate-dhdl-file as 'no' in your mdp files.
-The easiest way to specify the files is to do the following: If 'ener' is the
-common prefix of all of your energy files, do:
+If you had it set as 'yes' (the default), you're out of luck with that set of
+simulations (sorry). The easiest way to specify the files is to do the
+following: If 'ener' is the common prefix of all of your energy files, do:
 
     thermint -f ener*.edr
             
@@ -54,4 +55,9 @@ are chosen by default under the assumption that your simulation will be at least
 five times the correlation time. The standard error is then estimated to be the
 bootstrap standard deviation. The number of blocks can be changed with
 --nblocks. Choosing too many blocks will give an uncertainty which is much lower
-than the true uncertainty."
+than the true uncertainty.
+
+When you run the program it will tell you which group (right now coul, vdw,
+mass, or restraint) and the lambda values and the file. At the end of the
+calculation you'll get a breakdown of the results along with the total free
+energy change estimate and uncertainty.
