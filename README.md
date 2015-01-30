@@ -10,7 +10,7 @@ estimate through a bootstrap calculation.
 Note that GROMACS already comes with a way to calculate free energy estimates
 with the Bennett Acceptance Ratio using "gmx bar", so you should check that out
 as well, since unlike this project, it is reviewed by several developers in the
-field.
+field (thus far this code has been reviewed by just myself).
 
 ##Prerequisites
 
