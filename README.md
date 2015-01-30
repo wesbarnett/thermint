@@ -30,6 +30,9 @@ The GMXPREFIX environmental variable is used to find the GROMACS install
 location. Either set it manually or [source the GMXRC file in your GROMACS
 installation](http://www.gromacs.org/Documentation/Installation_Instructions#Getting_access_to_GROMACS_after_installation).
 
+Also note that if you use gcc the bootstrap calculation will be compiled to run
+in parallel using OpenMP automatically.
+
 ##Running
 
 By default the program uses the trapezoid method for the integration, but
