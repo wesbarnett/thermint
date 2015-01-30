@@ -14,7 +14,8 @@ field (thus far this code has been reviewed by just myself).
 
 ##Prerequisites
 
-You need Boost and GROMACS.
+You need Boost (for the commandline parser) and GROMACS (to read in the
+compressed energy files).
 
 ##Installation
 
