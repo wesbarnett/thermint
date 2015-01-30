@@ -134,6 +134,10 @@ And here's the histogram from the bootstrap calculation:
 ![Bootstrap distribution of free energy difference estimate](bootstrap.png)
 
 ##Resources
-M. R. Shirts and D. L. Mobley, "An introduction to best practices in free energy
+
+* M. R. Shirts and D. L. Mobley, "An introduction to best practices in free energy
 calculations", in Biomolecular Simulations: Methods and Protocols, Methods in
 Molecular Biology 924:271-311 (2013). 
+* J. Lemkul, ["GROMACS Tutorial: Free Energy Calculations: Methane in
+Water"](http://www.bevanlab.biochem.vt.edu/Pages/Personal/justin/gmx-tutorials/free_energy/index.html).
+
