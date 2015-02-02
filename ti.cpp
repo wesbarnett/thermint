@@ -14,24 +14,30 @@
 const double bootstrap_tol = 1.0e-1;
 const vector <string> dV_group_names = 
 {
-    "dVvdw/dl",
+    "dVremain/dl",
+    "dEkin/dl",
     "dVcoul/dl",
-    "dVbonded/dl",
-    "dVrestraint/dl"
+    "dVvdw/dl",
+    "dVrestraint/dl",
+    "dVbonded/dl"
 };
 const vector <string> lambda_group_names = 
 {
-    "vdw-lambdas",
+    "fep-lambdas",
+    "mass-lambdas",
     "coul-lambdas",
-    "bonded-lambdas",
-    "restraint-lambdas"
+    "vdw-lambdas",
+    "restraint-lambdas",
+    "bonded-lambdas"
 };
 const vector <string> group_short_names =
 {
-    "vdw",
+    "remain",
+    "mass",
     "coul",
-    "bonded",
-    "restraint"
+    "vdw",
+    "restraint",
+    "bonded"
 };
 
 int main(int argc, char* argv[]) {
@@ -566,14 +572,18 @@ int dVdl_energy_info::get_group_info(ener_file *fp)
     do_enxnms(fp,&nre,&nm);
 
     // Filter the groups until we get the dV/dl groups
-    for (int i = 0; i < nre; i++) 
+    for (int j = 0; j < dV_group_names.size(); j++)
     {
-        string mystring(nm[i].name);
-        if (find(dV_group_names.begin(), dV_group_names.end(),mystring) != dV_group_names.end())
-        { 
-            group_names.push_back(mystring);
-            locations.push_back(i);
-            units = nm[i].unit;
+        for (int i = 0; i < nre; i++) 
+        {
+            string mystring(nm[i].name);
+            if (dV_group_names.at(j) == mystring)
+            //if (find(dV_group_names.begin(), dV_group_names.end(),mystring) != dV_group_names.end())
+            { 
+                group_names.push_back(mystring);
+                locations.push_back(i);
+                units = nm[i].unit;
+            }
         }
     }
 
