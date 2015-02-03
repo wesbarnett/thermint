@@ -2,10 +2,10 @@
 
 ##About
 
-This utility is designed to be used with GROMACS output from a set of free
-energy simulations. This program calculates free energy difference estimates
-through thermodynamic integration. Additionally it calculates uncertainty in the
-estimate through a bootstrap calculation.
+This utility is designed to be used with [GROMACS](http://www.gromacs.org)
+output from a set of free energy simulations. This program calculates free
+energy difference estimates through thermodynamic integration. Additionally it
+calculates uncertainty in the estimate through a bootstrap calculation.
 
 Note that GROMACS already comes with a way to calculate free energy estimates
 with the Bennett Acceptance Ratio using "gmx bar", so you should check that out
@@ -14,8 +14,8 @@ the results from this program and gmx bar should be very similar.
 
 ##Prerequisites
 
-You need Boost (for the commandline parser) and GROMACS (to read in the
-compressed energy files).
+You need [Boost](http://www.boost.org/) (for the commandline parser) and GROMACS
+(to read in the compressed energy files).
 
 ##Installation
 
@@ -158,6 +158,8 @@ And here's the histogram from the bootstrap calculation:
 
 * Frenkel, D. and B. Smit, "Thermodynamic Integration", in Understanding molecular simulation from algorithms to
 applications (2002).
+* [GROMACS User Manual (5.0.4)](ftp://ftp.gromacs.org/pub/manual/manual-5.0.4.pdf). See
+especially sections 3.12.2, 4.5, 5.7.4, 6.1, and 7.3.23.
 * Lemkul, J. A., ["GROMACS Tutorial: Free Energy Calculations: Methane in
 Water"](http://www.bevanlab.biochem.vt.edu/Pages/Personal/justin/gmx-tutorials/free_energy/index.html).
 * Shirts, M. R. and D. L. Mobley, "An introduction to best practices in free energy
