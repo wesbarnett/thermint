@@ -158,7 +158,7 @@ And here's the histogram from the bootstrap calculation:
 
 * Frenkel, D. and B. Smit, "Thermodynamic Integration", in Understanding molecular simulation from algorithms to
 applications (2002).
-* [GROMACS User Manual (5.0.4)](ftp://ftp.gromacs.org/pub/manual/manual-5.0.4.pdf). See
+* [GROMACS User Manual 5.0.4](ftp://ftp.gromacs.org/pub/manual/manual-5.0.4.pdf). See
 especially sections 3.12.2, 4.5, 5.7.4, 6.1, and 7.3.23.
 * Lemkul, J. A., ["GROMACS Tutorial: Free Energy Calculations: Methane in
 Water"](http://www.bevanlab.biochem.vt.edu/Pages/Personal/justin/gmx-tutorials/free_energy/index.html).
