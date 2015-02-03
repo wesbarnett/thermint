@@ -79,8 +79,8 @@ bootstrap standard deviation. The number of blocks can be changed with
 --nblocks. Choosing too many blocks will give an uncertainty which is much lower
 than the true uncertainty.
 
-When you run the program it will tell you which group (right now coul, vdw,
-mass, or restraint) and the lambda values and the file. At the end of the
+When you run the program it will tell you which group (mass, coulomb, vdw,
+restraint, bonded, and all remaining) and the lambda values and the file. At the end of the
 calculation you'll get a breakdown of the results along with the total free
 energy change estimate and uncertainty.
 
