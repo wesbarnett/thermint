@@ -53,10 +53,10 @@ for trapezoid rule and Simpson's method is not required. The method is changed
 with the -m flag.
 
 When running the integration calculation you must specify the energy files. **In
-order use this utility you must have set separate-dhdl-file as 'no' in your mdp
+order use this utility you must have set *separate-dhdl-file* as 'no' in your mdp
 files.**  If you had it set as 'yes' (the default), you're out of luck with that
-set of simulations (sorry), so if you want to use this utility, run them again
-with the option set to 'no'.
+set of simulations for this program (sorry), so if you want to use this utility,
+run them again with the *separate-dhdl-file* set to 'no'.
 
 The easiest way to specify the energy files to read in is to do the
 following: If 'ener' is the common prefix of all of your energy files, do:
@@ -65,7 +65,7 @@ following: If 'ener' is the common prefix of all of your energy files, do:
             
 Note that dV/dl, which is required for the integration, is read in directly from
 the energy files so that **the output frequency of these values from your
-simulation was determined by the nstenergy variable in your mdp file**.
+simulation was determined by the *nstenergy* variable in your mdp file**.
 
 As mentioned above the standard error is estimated using a bootstrap
 calculation. The number of iterations in the bootstrap calculation can be
