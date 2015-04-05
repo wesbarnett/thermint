@@ -10,7 +10,10 @@ calculates uncertainty in the estimate through a bootstrap calculation.
 Note that GROMACS already comes with a way to calculate free energy estimates
 with the Bennett Acceptance Ratio using "gmx bar", so you should check that out
 as well, since unlike this project, it is reviewed by multiple developers. But,
-the results from this program and gmx bar should be very similar.
+the results from this program and gmx bar should be very similar. Additionally
+you should checkout the [pymbar project](https://github.com/choderalab/pymbar),
+specifically the [alchemical free energy
+tool](https://github.com/choderalab/pymbar/tree/master/examples/alchemical-free-energy).
 
 ##Prerequisites
 
